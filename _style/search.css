@@ -1,0 +1,142 @@
+/* search */
+
+body.loading #searchbox{
+    display: none;
+}
+
+#searchbox{
+    position: absolute;
+    z-index: 100;
+    left: 10px;
+    top: 110px;
+
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+}
+
+#searchbox .control-search {
+    float: left;
+    display: block;
+    content: '';
+    text-indent: -999em;
+    background: url("../_img/icons-leaflet.png") no-repeat;
+    background-position: 2px -153px;
+
+    width: 30px;
+    height: 30px;
+
+}
+
+#searchbox:hover {
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+#searchpanel{
+    position: absolute;
+    margin-left: 34px;
+    margin-top: 1px;
+}
+
+#searchpanel .searchinput{
+    width: 200px;
+    height: 28px;
+    background-color: white;
+}
+
+#searchpanel .searchinput input{
+    width: 100%;
+    height: 100%;
+    padding: 2px 2px 2px 8px;
+}
+
+#searchForm{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#searchresults{
+    background-color: white;
+    height: auto;
+    width: 100%;
+    font-family: helvatica, Arial, sans-serif;
+    font-size: 12px;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+}
+
+#searchresults .result{
+    padding: 4px 10px 4px 24px;
+    border-bottom: 1px solid silver;
+    background: url("../_img/ui_icons.png?v2") no-repeat;
+    background-position: 4px -297px;
+}
+
+#searchresults .result.i1,
+.inlinelegende div.i1{
+    background-position: 4px -238px;
+}
+
+#searchresults .result.i2,
+.inlinelegende div.i2{
+    background-position: 4px -257px;
+}
+
+#searchresults .result.i3,
+.inlinelegende div.i3{
+    background-position: 4px -277px;
+}
+
+#searchresults .result.i4,
+.inlinelegende div.i4{
+    background-position: 4px -297px;
+}
+
+#searchresults .result.i5,
+.inlinelegende div.i5{
+    background-position: 4px -317px;
+}
+
+#searchresults .result.i6,
+.inlinelegende div.i6,
+#searchresults .result.i0,
+.inlinelegende div.i0{
+    background-position: 4px -317px;
+}
+
+#searchresults .result.imine{
+    background-position: 4px -980px;
+}
+
+#searchresults .result.ipdv{
+    background-position: 4px -997px;
+}
+
+#searchresults .result.iroadblock{
+    background-position: 4px -1015px;
+}
+
+#searchresults .result:hover{
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+
+#searchresults .footer{
+    padding: 4px 10px;
+    border-bottom: 1px solid silver;
+    font-size: 10px;
+    color: grey;
+}
+
+#searchresults .footer .more,
+#searchresults .footer .less{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#searchresults .footer .more:hover,
+#searchresults .footer .less:hover{
+    color: black;
+}

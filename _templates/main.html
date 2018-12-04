@@ -1,0 +1,626 @@
+<!--menu-->
+    <div class="inner">
+      <a href="http://ipisresearch.be"><img src="_img/ipislogo.png" alt="IPIS logo" style="float:right;width:44px"></a>
+      <h2 class="section">Map of Mining Sites in Tanzania</h2>
+
+        <div style="display: none">
+            <h3 class="section">Year of Visit</h3>
+
+            <div id="yearslider">
+                <div class="years" id="slideryears"></div>
+
+                <div class="handle start" id="sliderstart"></div>
+                <div class="handle end" id="sliderend"></div>
+                <div class="bar"><div id="sliderprogress"></div></div>
+
+            </div>
+
+        </div>
+
+        <h3 class="section">Datasets and filters</h3>
+        <div id="layers"></div>
+        <br>
+        <div id="baselayers">
+            <h3>Base Layer</h3>
+        </div>
+        <br>
+        <a href="javascript:UI.showInfo()" class="button">More info</a>
+        <br>
+    </div>
+
+<!--/menu-->
+
+<!--loading-->
+    <div id="loading">
+        Loading<br>
+        <div class="lds-dual-ring"></div>
+    </div>
+<!--/loading-->
+
+<!--timeout-->
+<div id="timeout">Le chargement de la carte prend plus de temps que prévu. <br>Nous essayons à nouveau.</div>
+<!--/timeout-->
+
+<!--loadererror-->
+<div id="loadererror">Le chargement de la carte a échoué en raison d'un problème de connexion.<br>Réessayez plus tard ou avec une connection plus rappide (par exemple par 3G ou 4G).<br><br>Si vous voyez se message à plusieurs reprises, controler <a href="https://www.mapbox.com/help/mapbox-browser-support/">ici</a> si votre browser supporte WebGL (ce qui n'est pas le cas pour Internet Explorer), ou contactez <a href="mailto:mapping@ipisresearch.be">mapping@ipisresearch.be</a></div>
+<!--/loadererror-->
+
+
+
+<!--dashboard-->
+<div id="dashboard">
+    <button class="mapboxgl-popup-close-button" type="button" aria-label="Close popup">×</button>
+    <div id="dashboardcontent">
+
+    </div>
+</div>
+<!--/dashboard-->
+
+
+<!--minePopup-->
+    {{{name}}}
+<!--/minePopup-->
+
+
+<!--mineDashBoard-->
+<div class="popup cols2">
+    <h2>Site name: {{{name}}}</h2>
+    <div class="dashboardColLeft">
+        <table class="infotable" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>Mineral(s):</th>
+                <td>{{mineralString}}</td>
+            </tr>
+            <tr>
+                <th>PCode</th>
+                <td>{{{pcode}}}</td>
+            </tr>
+            <tr>
+                <th>Site type</th>
+                <td>{{{type}}}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{{region}}}</td>
+            </tr>
+            <tr>
+                <th>District</th>
+                <td>{{{district}}}</td>
+            </tr>
+            <tr>
+                <th>Nearest village</th>
+                <td>{{{village}}}</td>
+            </tr>
+            <!--
+            <tr>
+                <th>Origine</th>
+                <td>{{{origin}}}</td>
+            </tr>
+            -->
+            <tr>
+                <th>Longitude</th>
+                <td>{{{fLongitude}}}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{{fLatitude}}}</td>
+            </tr>
+            <!--
+            <tr>
+                <th class="multiline">Date visite</th>
+                <td class="multiline">{{{datesString}}}</td>
+            </tr>
+            <tr>
+                <th class="multiline">Nombre de creuseurs</th>
+                <td class="multiline">{{{workersString}}}</td>
+            </tr>
+            <tr>
+                <th class="multiline">Nombre de puits</th>
+                <td class="multiline">{{{pitsString}}}</td>
+            </tr>
+            {{#depthString}}
+            <tr>
+                <th class="multiline">Profondeur</th>
+                <td class="multiline">{{{depthString}}} m</td>
+            </tr>
+            {{/depthString}}
+            {{#soilString}}
+            <tr>
+                <th class="multiline">Sol</th>
+                <td class="multiline">{{{soilString}}}</td>
+            </tr>
+            {{/soilString}}
+            {{#consolidated.itsci_decoded}}
+            <tr>
+                <th class="multiline">iTSCi</th>
+                <td class="multiline">{{{consolidated.itsci_decoded}}}</td>
+            </tr>
+            {{/consolidated.itsci_decoded}}
+            -->
+
+        </table>
+    </div>
+    <div class="dashboardtabs">
+        {{#picture}}
+        <span data-url="http://www.ipisresearch.be/mapping/webmapping/resources/img_sites/{{picture}}" class="image" style="background-image: url('http://www.ipisresearch.be/mapping/webmapping/resources/img_sites/{{picture}}')">
+
+        </span>
+        {{/picture}}
+        <div class="{{tabButton1}} first" onclick="UI.activateDashboardTab(1,this)">Site information</div>
+        <div class="{{tabButton2}}" onclick="UI.activateDashboardTab(2,this)">Minerals</div>
+        <div class="{{tabButton3}}" onclick="UI.activateDashboardTab(3,this)">Socio-economic</div>
+        <div class="{{tabButton4}}" onclick="UI.activateDashboardTab(4,this)">Health and safety</div>
+        <div class="{{tabButton5}}" onclick="UI.activateDashboardTab(5,this)">State service visits</div>
+    </div>
+    <div class="popupColRight">
+
+        <div class="tabcontent">
+            <div class="tab tab1 {{tabPanel1}}">
+                {{{infoTab}}}
+            </div>
+            <div class="tab tab2 {{tabPanel2}}">
+                {{{substancesTab}}}
+            </div>
+            <div class="tab tab3 {{tabPanel3}}">
+                {{{socioTab}}}
+            </div>
+            <div class="tab tab4 {{tabPanel4}}">
+                {{{healthTab}}}
+            </div>
+            <div class="tab tab5 {{tabPanel5}}">
+                {{{servicesTab}}}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!--/mineDashBoard-->
+
+
+<!--visitDetail-->
+<table class="infotable visittable" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <th>Project</th>
+        <td>{{{project}}}</td>
+    </tr>
+    <tr>
+        <th>Visit Date</th>
+        <td>{{{formattedDate}}}</td>
+    </tr>
+    {{#visit_onsite_novisit}}
+    <tr>
+        <th>Visit on Site</th>
+        <td>Non: {{{visit_onsite_novisitreason}}}</td>
+    </tr>
+    {{/visit_onsite_novisit}}
+    <tr>
+        <th>Mineral(s)</th>
+        <td>{{mineralString}}</td>
+    </tr>
+    <!--
+    {{#mercuryString}}
+    <tr>
+        <th>Traitement de l'or</th>
+        <td>{{{mercuryString}}}</td>
+    </tr>
+    {{/mercuryString}}
+    -->
+
+
+    {{#hasWorkers}}
+    <tr>
+        <th class="multiline">Number of workers</th>
+        <td class="multiline">{{{workers}}}</td>
+    </tr>
+    {{/hasWorkers}}
+    {{#pits}}
+    <tr>
+        <th class="multiline">Number of active pits</th>
+        <td class="multiline">{{{pits}}}</td>
+    </tr>
+    {{/pits}}
+    {{#pitsType}}
+    <tr>
+        <th class="multiline">Type de puits</th>
+        <td class="multiline">{{{pitsType}}}</td>
+    </tr>
+    {{/pitsType}}
+    {{#depth}}
+    <tr>
+        <th class="multiline">Depth</th>
+        <td class="multiline">{{{depth}}} m</td>
+    </tr>
+    {{/depth}}
+    <!--
+    {{#soil}}
+    <tr>
+        <th class="multiline">Sol</th>
+        <td class="multiline">{{{soil}}}</td>
+    </tr>
+    {{/soil}}
+    -->
+    {{#qualification}}
+    <tr>
+        <th class="multiline">Qualification</th>
+        <td class="multiline"><i class="qualification q{{{qualification}}}"></i>{{{qualification}}}</td>
+    </tr>
+    {{/qualification}}
+    {{#arrete}}
+    <tr>
+        <th class="multiline">Arrêté</th>
+        <td class="multiline">{{{arrete}}}</td>
+    </tr>
+    {{/arrete}}
+</table>
+<!--/visitDetail-->
+
+
+<!--pdvPopup-->
+<div class="popup">
+    <h2>Point de vente: {{{name}}}</h2>
+    <div class="popupColLeft">
+        <table class="infotable" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>Substance(s)</th>
+                <td>{{mineralString}}</td>
+            </tr>
+            <tr>
+                <th>Date de visite</th>
+                <td>{{{date}}}</td>
+            </tr>
+            <tr>
+                <th>Présence armée</th>
+                <td>{{armedGroupString}}</td>
+            </tr>
+            {{#itsci}}
+            <tr>
+                <th>Présence iTSCi</th>
+                <td>{{{itsci}}}</td>
+            </tr>
+            {{/itsci}}
+            <tr>
+                <th>Province</th>
+                <td>{{{province}}}</td>
+            </tr>
+            <tr>
+                <th>Territoire</th>
+                <td>{{{territoire}}}</td>
+            </tr>
+            <tr>
+                <th>Collectivité</th>
+                <td>{{{collectivite}}}</td>
+            </tr>
+            <tr>
+                <th>Groupement</th>
+                <td>{{{groupement}}}</td>
+            </tr>
+            <tr>
+                <th>Village</th>
+                <td>{{{village}}}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{{fLongitude}}}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{{fLatitude}}}</td>
+            </tr>
+            <tr>
+                <th>Pcode</th>
+                <td>{{{pcode}}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!--/pdvPopup-->
+
+
+
+<!--roadblockPopup-->
+<div class="popup">
+    <h2>Barrière routière: {{{name}}}</h2>
+    <div class="popupColLeft">
+        <table class="infotable" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+              <th>Date de passage</th>
+              <td>{{date}}</td>
+          </tr>
+          <tr>
+                <th>Operateur(s)</th>
+                <td>{{operateur}}</td>
+            </tr>
+            <tr>
+                <th>Type d'operateur(s)</th>
+                <td>{{{type}}}</td>
+            </tr>
+            <tr>
+                <th>Type de barrière</th>
+                <td>{{{barriere}}}</td>
+            </tr>
+            {{#taxCible}}
+            <tr>
+                <th>Cible de taxe</th>
+                <td>{{{taxCible}}}</td>
+            </tr>
+            {{/taxCible}}
+            {{#taxMontant}}
+            <tr>
+                <th>Taxe montant</th>
+                <td>{{{taxMontant}}}</td>
+            </tr>
+            {{/taxMontant}}
+            {{#resourcesNaturelles}}
+            <tr>
+                <th>Ressources naturelles ciblées</th>
+                <td>{{{resourcesNaturelles}}}</td>
+            </tr>
+            {{/resourcesNaturelles}}
+            {{#source}}
+            <tr>
+                <th>Source</th>
+                <td>{{{source}}}</td>
+            </tr>
+            {{/source}}
+
+        </table>
+    </div>
+</div>
+<!--/roadblockPopup-->
+
+<!--protectedAreaPopup-->
+<div class="popup">
+    <h2>Aire protégée</h2>
+    <table border="0" cellspacing="0" cellpadding="0" class="infotable">
+        <tr>
+            <th>Nom</th>
+            <td>{{{name}}}</td>
+        </tr>
+        <tr>
+            <th>Source</th>
+            <td>{{{source}}}</td>
+        </tr>
+    </table>
+</div>
+<!--/protectedAreaPopup-->
+
+<!--concessionPopup-->
+<div class="popup">
+    <h2>Titre minier</h2>
+    <table border="0" cellspacing="0" cellpadding="0" class="infotable">
+        <tr>
+            <th>Type</th>
+            <td>{{{type}}}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{{name}}}</td>
+        </tr>
+        <tr>
+            <th>Parties</th>
+            <td>{{{parties}}}</td>
+        </tr><tr>
+            <th>Statut</th>
+            <td>{{{statut}}}</td>
+        </tr><tr>
+            <th>Date d'expiration</th>
+            <td>{{{date_de1}}}</td>
+        </tr>
+    </table>
+</div>
+<!--/concessionPopup-->
+
+<!--yearlist-->
+{{#.}}
+<div class="year">
+    <div class="yeartitle yeardisplay{{year}}" data-target=".panel{{id}}" onclick="UI.togglePanel(this)">{{year}}</div>
+    <div class="yeardata yeardisplay{{year}} panel{{id}}">
+        {{{data}}}
+        <div class="clear"></div>
+    </div>
+
+</div>
+{{/.}}
+<!--/yearlist-->
+
+<!--yeartabs-->
+<div class="yeartabs">
+    {{#.}}
+        <span class="subtab">{{year}}</span>
+    {{/.}}
+</div>
+<div class="subtabcontent">
+    {{#.}}
+    {{{data}}}
+    {{/.}}
+</div>
+<!--/yeartabs-->
+
+<!--armydetailheader-->
+<div class="armycolheader">
+    <div>&nbsp;</div>
+    <div><b>Fréquence de présence</b></div>
+    <div><b>Contrôle(s) exercé(s)</b></div>
+    <div>Taxation des minerais</div>
+    <div>Taxation du petit commerce</div>
+    <div>Taxation d'entrée</div>
+    <div>Achètent des minerais</div>
+    <div>Travaux forcés</div>
+    <div>Creusent eux-mêmes	</div>
+    <div>Monopole du commerce</div>
+    <div>Pillage</div>
+
+</div>
+<!--/armydetailheader-->
+
+<!--armydetail-->
+<div class="armycol">
+    <div><b>{{name}}</b></div>
+    <div style="white-space: nowrap;">&nbsp;{{frequency}}&nbsp;</div>
+    <div>&nbsp;</div>
+    <div class="col{{taxation}}">{{taxation}}</div>
+    <div class="col{{taxationCommerce}}">{{taxationCommerce}}</div>
+    <div class="col{{taxationEntrence}}">{{taxationEntrence}}</div>
+    <div class="col{{buying}}">&nbsp;{{buying}}</div>
+    <div class="col{{forcedLabour}}">&nbsp;{{forcedLabour}}</div>
+    <div class="col{{digging}}">&nbsp;{{digging}}</div>
+    <div class="col{{monopoly}}">&nbsp;{{monopoly}}</div>
+    <div class="col{{pillaging}}">&nbsp;{{pillaging}}</div>
+</div>
+<!--/armydetail-->
+
+<!--servicesdetail-->
+<div class="yearpanel captioned">
+    <table border="0" cellspacing="0" cellpadding="4">
+{{#.}}
+        <tr>
+            <td class="serviceline" valign="top" style="font-size: 12px"><b>{{{service}}}</b><br></td>
+            <td class="serviceline" nowrap="nowrap" style="font-size: 12px; color: #666; text-align: right">
+                Frequency of visit:<br>
+                Purpose of visit:
+            </td>
+            <td class="serviceline" nowrap="nowrap" style="font-size: 12px; color: #666">
+                {{{frequency}}}<br>
+                {{{purpose}}}
+            </td>
+        </tr>
+{{/.}}
+    </table>
+</div>
+<!--/servicesdetail-->
+
+
+<!--healthDetail-->
+<table class="infotable tabbed" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+        <th nowrap="" width="10%">Health and safety</th><td> </td>
+    </tr>
+    <tr>
+        <td nowrap="" class="checklistcaption line">Sanitary facilities</td>
+        <td class="checklistitem">{{facilities}}</td>
+    </tr>
+    <tr>
+        <td nowrap="" class="checklistcaption line">Accidents</td>
+        <td class="checklistitem">
+            Number of wounded miners during past year: {{wounded}}<br>
+            {{#woundedcauses}}Causes of accidents with wounded miners: {{woundedcauses}}<br>{{/woundedcauses}}
+            Number of deaths amongst miners during past year: {{killed}}<br>
+            {{#killedcauses}}Causes of accidents with dead miners: {{killedcauses}}<br>{{/killedcauses}}
+        </td>
+    </tr>
+    {{#womenwork}}
+    <tr>
+        <td nowrap="" class="checklistcaption line">Women working :</td>
+        <td line>{{womenwork}}</td>
+    </tr>
+    {{/womenwork}}
+
+
+    <tr>
+        <th nowrap="" width="10%"><br>Child labour (&lt;15yo)</th><td> </td>
+    </tr>
+    <tr>
+        <td nowrap="" class="checklistcaption line">Number of children</td>
+        <td class="checklistitem">{{workerchildunder15}}</td>
+    </tr>
+    {{#childunder15activitiesmining}}
+    <tr>
+        <td nowrap="" class="checklistcaption line">Kind of activities</td>
+        <td class="checklistitem">{{childunder15activitiesmining}}</td>
+    </tr>
+    {{/childunder15activitiesmining}}
+
+</table>
+<!--/healthDetail-->
+
+
+
+<!--socioDetail-->
+<table class="infotable tabbed" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+        <th nowrap="" width="10%">Socio-economic</th><td> </td>
+    </tr>
+    <tr>
+        <td nowrap="" class="checklistcaption line">Women workers</td>
+        <td class="checklistitem">
+            Number of women workers {{workerwomen}} <br>
+            {{#womenactivitiesminin}}Kind of activitie {{womenactivitiesminin}} <br>{{/womenactivitiesminin}}
+        </td>
+    </tr>
+    <tr>
+        <td nowrap="" class="checklistcaption line">Close to residential area</td>
+        <td class="checklistitem">{{closetoresidential}}</td>
+    </tr>
+    <tr>
+        <td nowrap="" class="checklistcaption line">Corporate social responsibility</td>
+        <td class="checklistitem">{{csr}}</td>
+    </tr>
+    <tr>
+        <td nowrap="" class="checklistcaption line">Type of on-site buildings</td>
+        <td class="checklistitem">{{buildingtype}}</td>
+    </tr>
+    <tr>
+        <td nowrap="" class="checklistcaption line">On-site camp</td>
+        <td class="checklistitem">
+            {{camponesite}}<br>
+            Number of residents: {{peoplelivingincamp}} <br>
+            With families: {{liveincampwith}} <br>
+        </td>
+    </tr>
+    <tr>
+        <td nowrap="" class="checklistcaption line">Incidents</td>
+        <td class="checklistitem">{{incidents}}</td>
+    </tr>
+
+
+</table>
+<!--/socioDetail-->
+
+
+
+<!--substancesdetail-->
+<div class="yearpanel captioned">
+    <table border="0" cellspacing="0" cellpadding="2" class="mineralroutes">
+        <tr>
+            <th>Mineral</th>
+            <th></th>
+            <th></th>
+        </tr>
+    {{#mineralRoutes}}
+        <tr>
+            <td><i style="background-color: {{{color}}}"></i> {{{mineral}}}</td>
+            <td>{{{sellingPoint}}}</td>
+            <td>{{{finalDestination}}}</td>
+        </tr>
+    {{/mineralRoutes}}
+    </table>
+
+    {{#mercuryString}}
+    <br>
+    Gold treatment: {{mercuryString}}
+    <br>
+    {{/mercuryString}}
+
+
+</div>
+<!--/substancesdetail-->
+
+
+<!--lightbox-->
+<div id="lightbox">
+    <div class="image" style="background-image: url('{{url}}')"></div>
+</div>
+<!--/lightbox-->
+
+<!--noArmyPresent-->
+    <div class="subtabcontent">Pas de présence observé.<br><br></div>
+<!--/noArmyPresent-->
+
+
+<!--visitDateProject-->
+    <div class="subtabheader">{{{formattedDate}}}: {{{project}}} {{#visit_onsite_novisit}} <br>  <u>Non-visité sur place</u>: {{{visit_onsite_novisitreason}}} {{/visit_onsite_novisit}}
+    </div>
+<!--/visitDateProject-->

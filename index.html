@@ -1,0 +1,79 @@
+<html>
+<head>
+    <meta charset=utf-8 />
+
+    <link href='_style/main.css?v2' rel='stylesheet' />
+    <link href='_style/search.css' rel='stylesheet' />
+
+    <!-- Mapbox GL -->
+    <link href='core/_style/mapboxgl.0.43.0.css' rel='stylesheet' />
+    <script src='core/_script/lib/mapboxgl.0.43.0.js'></script>
+    <script src='core/_script/lib/mapboxextra.js'></script>
+
+    <!-- C3 and D3 -->
+    <script src="core/_script/c3/d3_3.5.6_min.js"></script>
+    <script src="core/_script/c3/c3.min.js"></script>
+    <link href='core/_style/c3.min.css' rel='stylesheet' />
+
+    <!-- Main IPIS map code -->
+    <script src='core/_script/lib/template.js'></script>
+    <script src='core/_script/lib/mustache.js'></script>
+    <script src='core/_script/lib/eventbus.js'></script>
+    <script src='core/_script/lib/fetchService.js'></script>
+
+    <script src="core/_script/map/enum.js"></script>
+    <script src="core/_script/map/mapService.js"></script>
+    <script src="core/_script/map/searchService.js"></script>
+    <script src="core/_script/map/main.js"></script>
+    <script src="core/_script/map/ui.js"></script>
+    <script src="core/_script/map/util.js"></script>
+
+    <!-- map specific code -->
+    <script src="_script/custom/data.js?v2"></script>
+    <script src="_script/custom/tzaChart.js"></script>
+
+    <script src="_script/config.js"></script>
+    <!--<script src="_script/custom/chart.js"></script>-->
+
+    <script>
+		Config.apiScope = Config.apiScopeDev;
+    </script>
+</head>
+
+<body>
+<div id="menu"></div>
+<div id="map">
+
+    <div id='legend'>
+        <div class="charts">
+            <h3>Visible mining sites</h3>
+            <div class="label">
+                <span id="chart_current"></span> of <span id="chart_total"></span> mining sites
+            </div>
+            <div id="chart1"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id='searchbox'>
+    <a class="control-search" href="javascript:UI.initSearch()">
+        Search
+    </a>
+    <div id="searchpanel" class="hidden">
+        <div class="searchinput"><form id="searchForm"><input type="text" placeholder="Search"></form></div>
+        <div id="searchresults">
+        </div>
+    </div>
+</div>
+
+
+<div id="disclaimer"><div id="disclaimerbody"></div></div>
+
+<div id="info"><div id="infobody"></div></div>
+
+
+</body>
+</html>

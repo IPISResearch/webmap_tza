@@ -1,0 +1,18 @@
+{
+  "name": "IPIS_webmapping_base",
+  "version": "0.3.0",
+  "description": "Base template for IPIS webmapping",
+  "main": "index.html",
+  "repository": "https://github.com/IPISResearch/webmap_tza",
+  "author": "IPIS",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-uglify": "*",
+    "grunt-git": "^1.0.10",
+    "grunt-text-replace": "^0.4.0"
+  }
+}
