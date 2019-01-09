@@ -31,14 +31,10 @@ var Data = function () {
 
     var mineralColors = {
         "Gold": "#DAA520",
-        "Diamond": "#1E90FF",
-        "Copper": "#C87533",
-        "Limestone": "#9cc6de",
-        "Salt": "#f7f7f7",
-		"Magnetite": "#cfcfcf",
-        "Opal (fire)": "#a00050",
-		"Opal (silk)": "#9f5fac",
-		"Opal (yellow)": "#956d23"
+        "Diamond": "#4937A8",
+        "Copper": "#D05D07",
+        "Limestone": "#810051",
+        "Salt": "#20A386"
     };
 
 

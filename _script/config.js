@@ -49,17 +49,8 @@ var Config = {
             },
             filterId: 1,
             filters:[
-                //{id: "years", index: 1, label: "Année de dernière visite",items: Data.getYears,onFilter: Data.updateFilter,filterProperty:"year",maxVisibleItems:5},
                 {id: "minerals", index: 2, label: "Minerals",items: Data.getMinerals,onFilter: Data.updateFilter,filterProperty: "minerals",array:true,maxVisibleItems: 5},
-                //{id: "armedpresence", index: 4,label: "Présence armée",
-                //items: Data.getArmyGroups,onFilter: Data.updateFilter,filterProperty: "armygroups",array:true},
-                //{id: "qualification", index: 6, label: "Qualification ministérielle<br>&ensp;<small>(source: BGR, décembre 2017)</small>",items:[
-                //  {label: "Vert", value:1 , color: "#29b012"},
-                //  {label: "Jaune", value:2 , color : "#e0a500"},
-                //  {label: "Rouge", value:3, color: "#b00012"},
-                //  {label: "Aucune", value:0, color: "grey"}
-                //],onFilter: Data.updateFilter,filterProperty: "qualification"},
-				{id: "type", index: 5, label: "Site Type",items:[
+                {id: "type", index: 5, label: "Site Type",items:[
 						{label: "Mine Site", value:0},
 						{label: "Processing Site", value:1}
 					],onFilter: Data.updateFilter,filterProperty: "types",array:true},
