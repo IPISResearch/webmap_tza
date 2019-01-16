@@ -38,11 +38,11 @@
 <!--/loading-->
 
 <!--timeout-->
-<div id="timeout">Le chargement de la carte prend plus de temps que prévu. <br>Nous essayons à nouveau.</div>
+<div id="timeout">Loading the map is taking more time then foreseen. <br>We're trying again.</div>
 <!--/timeout-->
 
 <!--loadererror-->
-<div id="loadererror">Le chargement de la carte a échoué en raison d'un problème de connexion.<br>Réessayez plus tard ou avec une connection plus rappide (par exemple par 3G ou 4G).<br><br>Si vous voyez se message à plusieurs reprises, controler <a href="https://www.mapbox.com/help/mapbox-browser-support/">ici</a> si votre browser supporte WebGL (ce qui n'est pas le cas pour Internet Explorer), ou contactez <a href="mailto:mapping@ipisresearch.be">mapping@ipisresearch.be</a></div>
+<div id="loadererror">Loading the map has failed due to a connection issue. <br>Please retry later with a faster connection (e.g. over 3G or 4G). <br><br>If you see this message multiple times, check <a href="https://www.mapbox.com/help/mapbox-browser-support/">here</a> if your browser supports WebGL (this is not the case for Internet Explorer), or contact <a href="mailto:mapping@ipisresearch.be">mapping@ipisresearch.be</a></div>
 <!--/loadererror-->
 
 
@@ -373,11 +373,15 @@
 
 <!--protectedAreaPopup-->
 <div class="popup">
-    <h2>Aire protégée</h2>
+    <h2>Protected area</h2>
     <table border="0" cellspacing="0" cellpadding="0" class="infotable">
         <tr>
-            <th>Nom</th>
+            <th>Name</th>
             <td>{{{name}}}</td>
+        </tr>
+        <tr>
+            <th>Designation</th>
+            <td>{{{desig_eng}}}</td>
         </tr>
         <tr>
             <th>Source</th>
