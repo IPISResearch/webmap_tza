@@ -5,7 +5,7 @@ var Config = {
     apiScope: "tza",
     apiScopeDev: "tza_dev",
     templateURL: "_templates/main.html",
-    showDisclaimerOnFirstUse: false,
+    showDisclaimerOnFirstUse: true,
     disclaimerUrl: "_templates/disclaimer.html",
     infoUrl: "_templates/info.html",
     // starting point for map
@@ -98,6 +98,46 @@ var Config = {
                   data: function(){return Data.getMinerals();}
                 },
                 belowLayer: 'ref_layer_mines'
+            }
+        },
+        geology:{
+            id: "geology",
+            filterId: 2,
+            label: "Greenbelt zones <br>&ensp;<small>(source: GMIS, 2018)</small>",
+            source: "http://ipis.annexmap.net/api/data/tza/geology", // tza > %apiScope%
+            sourceId: "geology",
+            display:{
+                type: 'fill',
+                fillColor: "#975B26",
+                fillOpacity: 0.4,
+                visible: false,
+                canToggle: true,
+                belowLayer: 'ref_layer_protectedAreas'
+            }
+            // popupOnhover: "name",
+            // onClick: function(item,lngLat){
+            //     UI.hideDashboard();
+            //     UI.popup(item.properties,"protectedAreaPopup",lngLat,true);
+            // }
+        },
+        protectedAreas:{
+            id: "protectedAreas",
+            filterId: 3,
+            label: "Protected areas<br>&ensp;<small>(source: WRI, 2018)</small>",
+            source: "http://ipis.annexmap.net/api/data/tza/protectedareas", // tza > %apiScope%
+            sourceId: "protectedAreas",
+            display:{
+                type: 'fill',
+                fillColor: "#7d9a5c",
+                fillOpacity: 0.4,
+                visible: false,
+                canToggle: true,
+                belowLayer: 'ref_layer_protectedAreas'
+            },
+            popupOnhover: "name",
+            onClick: function(item,lngLat){
+                UI.hideDashboard();
+                UI.popup(item.properties,"protectedAreaPopup",lngLat,true);
             }
         }
     }
