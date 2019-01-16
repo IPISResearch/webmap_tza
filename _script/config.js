@@ -104,7 +104,7 @@ var Config = {
             id: "geology",
             filterId: 2,
             label: "Greenbelt zones <br>&ensp;<small>(source: GMIS, 2018)</small>",
-            source: "http://ipis.annexmap.net/api/data/tza/geology", // tza > %apiScope%
+            source: "http://ipis.annexmap.net/api/data/%apiScope%/geology",
             sourceId: "geology",
             display:{
                 type: 'fill',
@@ -124,7 +124,7 @@ var Config = {
             id: "protectedAreas",
             filterId: 3,
             label: "Protected areas<br>&ensp;<small>(source: WRI, 2018)</small>",
-            source: "http://ipis.annexmap.net/api/data/tza/protectedareas", // tza > %apiScope%
+            source: "http://ipis.annexmap.net/api/data/%apiScope%/protectedareas",
             sourceId: "protectedAreas",
             display:{
                 type: 'fill',
