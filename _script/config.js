@@ -104,7 +104,7 @@ var Config = {
         geology:{
             id: "geology",
             filterId: 2,
-            label: "Geological greenstone <br>&ensp;<small>(source: GMIS, 2018)</small>",
+            label: "Geological greenstone belt <br>&ensp;<small>(source: GMIS, 2018)</small>",
             source: "http://ipis.annexmap.net/api/data/%apiScope%/geology",
             sourceId: "geology",
             display:{
