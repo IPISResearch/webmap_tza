@@ -46,6 +46,7 @@ var Data = function () {
         item.properties.region = data.re;
         item.properties.district = data.di;
         item.properties.village = data.vi;
+        item.properties.coop = data.cp;
         item.properties.qualification = 0;
 		item.properties.type = data.t;
         item.properties.workergroup = 0;
@@ -175,13 +176,18 @@ var Data = function () {
                         qualification: d.q,
                         source: d.s,
                         project: d.pj,
+                        coop: d.cp,
                         minerals: [],
                         services: [],
 						mineralRoutes: [],
                         health: {},
                         socio: {},
                         mercury: d.m == "No" ? 1 : d.m == "Yes" ? 2 : 0,
-                        cyanide: d.c == "No" ? 1 : d.c == "Yes" ? 2 : 0
+                        oreamalgamation: d.om,
+                        openair: d.pa,
+                        openairclosetoresidential: d.or,
+                        cyanide: d.c == "No" ? 1 : d.c == "Yes" ? 2 : 0,
+                        cyanidetailings: d.cd
                     };
 
                     for (var i = 1; i < 4; i++) {
@@ -220,12 +226,19 @@ var Data = function () {
 						wounded: d.aw,
 						woundedcauses: d.ac,
 						killed: d.ak,
-						killedcauses: d.a2
+						killedcauses: d.a2,
+                        workerwomen: d.ww,
+                        womenactivitiesmining: d.wa,
+                        workerchildunder15: d.cu,
+                        childunder15activitiesmining: d.cua,
+                        childunder15nonmining: d.cn,
+                        childunder15activitiesnonmining: d.cna
                     };
 
                     // socio
 					visit.socio = {
-						workerwomen: d.ww,
+						workers: workers,
+                        workerwomen: d.ww,
 						womenactivitiesmining: d.wa,
 						closetoresidential: d.cr,
 						csr: d.csr,
@@ -321,8 +334,9 @@ var Data = function () {
 
 						mine.properties.types = [];
                         if (d.t){
-                            if (d.t.indexOf("Mine")>=0) mine.properties.types.push(0);
-                            if (d.t.indexOf("Processing")>=0) mine.properties.types.push(1);
+                            if (d.t == "Mine site, Processing site") mine.properties.types.push(2);
+                            if (d.t == "Mine site") mine.properties.types.push(0);
+                            if (d.t == "Processing site") mine.properties.types.push(1);
                         }
 
                         // mercury
@@ -331,7 +345,7 @@ var Data = function () {
                         if (d.m == "No") mine.properties.mercury = 1;
                         if (d.m == 1) mine.properties.mercury = 2;
                         if (d.m == "Yes") mine.properties.mercury = 2;
-
+                        
 						// cyanide
 						mine.properties.cyanide = 0;
 						if (d.c == "No") mine.properties.cyanide = 1;
@@ -492,8 +506,12 @@ var Data = function () {
 
                 var visitDateProject = Template.render("visitDateProject", visit);
 
-                if (visit.mercury === 1) visit.mercuryString = "Non treated";
-                if (visit.mercury === 2) visit.mercuryString = "Mercury";
+                if (visit.mercury === 1) visit.mercuryString = "No";
+                if (visit.mercury === 2) visit.mercuryString = "Yes";
+                visit.hasmercury = visit.mercury == 2;
+                if (visit.cyanide === 1) visit.cyanideString = "No";
+                if (visit.cyanide === 2) visit.cyanideString = "Yes";
+                visit.hascyanide = visit.cyanide == 2;
 
                 var hasYear;
 
@@ -639,7 +657,7 @@ var Data = function () {
     me.getMinerals = function () {
         var result = [];
 
-        var order = ["Gold", "Copper", "Diamond", "Salt", "Limestone"].reverse();
+        var order = ["Gold", "Diamond", "Salt", "Limestone", "Copper"].reverse();
 
         minerals.forEach(function (mineral) {
             result.push({
@@ -674,7 +692,7 @@ var Data = function () {
     me.getServices = function () {
         var result = [];
 
-        var order = ["dummy"].reverse();
+        var order = ["RMO", "Village", "District", "NEMC", "OSHA", "TRA", "Forest services", "Food and drugs authority", "Police", "Immigration"].reverse();
 
         services.forEach(function (item) {
             result.push({label: item, value: servicesLookup[item], index: order.indexOf(item)})

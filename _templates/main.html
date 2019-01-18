@@ -67,10 +67,12 @@
     <h2>Site name: {{{name}}}</h2>
     <div class="dashboardColLeft">
         <table class="infotable" border="0" cellspacing="0" cellpadding="0">
+            <!--
             <tr>
                 <th>Mineral(s):</th>
                 <td>{{mineralString}}</td>
             </tr>
+            -->
             <tr>
                 <th>PCode</th>
                 <td>{{{pcode}}}</td>
@@ -104,6 +106,10 @@
             <tr>
                 <th>Latitude</th>
                 <td>{{{fLatitude}}}</td>
+            </tr>
+            <tr>
+                <th>Cooperative present</th>
+                <td>{{{coop}}}</td>
             </tr>
             <!--
             <tr>
@@ -189,17 +195,11 @@
         <th>Visit Date</th>
         <td>{{{formattedDate}}}</td>
     </tr>
-    {{#visit_onsite_novisit}}
-    <tr>
-        <th>Visit on Site</th>
-        <td>Non: {{{visit_onsite_novisitreason}}}</td>
-    </tr>
-    {{/visit_onsite_novisit}}
+    <!--
     <tr>
         <th>Mineral(s)</th>
         <td>{{mineralString}}</td>
     </tr>
-    <!--
     {{#mercuryString}}
     <tr>
         <th>Traitement de l'or</th>
@@ -207,14 +207,18 @@
     </tr>
     {{/mercuryString}}
     -->
-
-
-    {{#hasWorkers}}
+    {{#coop}}
     <tr>
-        <th class="multiline">Number of workers</th>
+        <th>Cooperative present</th>
+        <td>{{{coop}}}</td>
+    </tr>
+    {{/coop}}
+
+
+    <tr>
+        <th class="multiline">Number of workers <small>(in mining/processing)</small></th>
         <td class="multiline">{{{workers}}}</td>
     </tr>
-    {{/hasWorkers}}
     {{#pits}}
     <tr>
         <th class="multiline">Number of active pits</th>
@@ -500,9 +504,6 @@
 <!--healthDetail-->
 <table class="infotable tabbed" border="0" cellspacing="1" cellpadding="0">
     <tr>
-        <th nowrap="" width="10%">Health and safety</th><td> </td>
-    </tr>
-    <tr>
         <td nowrap="" class="checklistcaption line">Sanitary facilities</td>
         <td class="checklistitem">{{facilities}}</td>
     </tr>
@@ -515,27 +516,33 @@
             {{#killedcauses}}Causes of accidents with dead miners: {{killedcauses}}<br>{{/killedcauses}}
         </td>
     </tr>
-    {{#womenwork}}
+    {{#workerwomen}}
     <tr>
-        <td nowrap="" class="checklistcaption line">Women working :</td>
-        <td line>{{womenwork}}</td>
+        <td nowrap="" class="checklistcaption line">Women workers <small>(in mining/processing)</small></td>
+        <td class="checklistitem"> {{workerwomen}} <br>
+            {{#womenactivitiesmining}}Kind of activities: {{womenactivitiesmining}} <br>{{/womenactivitiesmining}}
+        </td>
     </tr>
-    {{/womenwork}}
-
-
+    {{/workerwomen}}
+    
+    {{#workerchildunder15}}
     <tr>
-        <th nowrap="" width="10%"><br>Child labour (&lt;15yo)</th><td> </td>
+        <td nowrap="" class="checklistcaption line">Children (&lt;15yo) working <small>(in mining/processing)</small></td>
+        <td class="checklistitem"> {{workerchildunder15}} <br>
+            {{#childunder15activitiesmining}}Kind of activities: {{childunder15activitiesmining}} <br>{{/childunder15activitiesmining}}
+        </td>
     </tr>
+    {{/workerchildunder15}}
+    
+    {{#childunder15nonmining}}
     <tr>
-        <td nowrap="" class="checklistcaption line">Number of children</td>
-        <td class="checklistitem">{{workerchildunder15}}</td>
+        <td nowrap="" class="checklistcaption line">Children (&lt;15yo) working <small>(in non-mining/non-processing)</small></td>
+        <td class="checklistitem"> {{childunder15nonmining}} <br>
+            {{#childunder15activitiesnonmining}}Kind of activities: {{childunder15activitiesnonmining}} <br>{{/childunder15activitiesnonmining}}
+        </td>
     </tr>
-    {{#childunder15activitiesmining}}
-    <tr>
-        <td nowrap="" class="checklistcaption line">Kind of activities</td>
-        <td class="checklistitem">{{childunder15activitiesmining}}</td>
-    </tr>
-    {{/childunder15activitiesmining}}
+    {{/childunder15nonmining}}
+    
 
 </table>
 <!--/healthDetail-->
@@ -544,16 +551,20 @@
 
 <!--socioDetail-->
 <table class="infotable tabbed" border="0" cellspacing="1" cellpadding="0">
+    {{#workers}}
     <tr>
-        <th nowrap="" width="10%">Socio-economic</th><td> </td>
+        <td nowrap="" class="checklistcaption line">Number of workers <small>(in mining/processing)</small></td>
+        <td class="checklistitem"> {{workers}} </td>
     </tr>
+    {{/workers}}
+    {{#workerwomen}}
     <tr>
-        <td nowrap="" class="checklistcaption line">Women workers</td>
-        <td class="checklistitem">
-            Number of women workers {{workerwomen}} <br>
-            {{#womenactivitiesminin}}Kind of activitie {{womenactivitiesminin}} <br>{{/womenactivitiesminin}}
+        <td nowrap="" class="checklistcaption line">Women workers <small>(in mining/processing)</small></td>
+        <td class="checklistitem"> {{workerwomen}} <br>
+            {{#womenactivitiesmining}}Kind of activities: {{womenactivitiesmining}} <br>{{/womenactivitiesmining}}
         </td>
     </tr>
+    {{/workerwomen}}
     <tr>
         <td nowrap="" class="checklistcaption line">Close to residential area</td>
         <td class="checklistitem">{{closetoresidential}}</td>
@@ -570,8 +581,8 @@
         <td nowrap="" class="checklistcaption line">On-site camp</td>
         <td class="checklistitem">
             {{camponesite}}<br>
-            Number of residents: {{peoplelivingincamp}} <br>
-            With families: {{liveincampwith}} <br>
+            {{#peoplelivingincamp}} Number of residents: {{peoplelivingincamp}} <br> {{/peoplelivingincamp}}
+            {{#liveincampwith}} With families: {{liveincampwith}} <br> {{/liveincampwith}}
         </td>
     </tr>
     <tr>
@@ -602,11 +613,49 @@
     {{/mineralRoutes}}
     </table>
 
-    {{#mercuryString}}
     <br>
-    Gold treatment: {{mercuryString}}
+
+    <table class="infotable tabbed" border="0" cellspacing="1" cellpadding="0">
+        <tr>
+            <th nowrap="" width="10%">Gold treatment using Mercury</th><td>{{mercuryString}}</td>
+        </tr>
+        {{#hasmercury}}
+        {{#oreamalgamation}}
+        <tr>
+            <td nowrap="" class="checklistcaption line">Amalgamation</td>
+            <td class="checklistitem">{{oreamalgamation}}</td>
+        </tr>
+        {{/oreamalgamation}}
+        {{#openair}}
+        <tr>
+            <td nowrap="" class="checklistcaption line">Open air burning</td>
+            <td class="checklistitem">{{openair}}</td>
+        </tr>
+        {{/openair}}
+        {{#openairclosetoresidential}}
+        <tr>
+            <td nowrap="" class="checklistcaption line">Burning close to residential area</td>
+            <td class="checklistitem">{{openairclosetoresidential}}</td>
+        </tr>
+        {{/openairclosetoresidential}}
+        {{/hasmercury}}
+    </table>
+
     <br>
-    {{/mercuryString}}
+
+    <table class="infotable tabbed" border="0" cellspacing="1" cellpadding="0">
+        <tr>
+            <th nowrap="" width="10%">Gold treatment using Cyanide</th><td>{{cyanideString}}</td>
+        </tr>
+        {{#hascyanide}}
+        {{#cyanidetailings}}
+        <tr>
+            <td nowrap="" class="checklistcaption line">Cyanide tailings</td>
+            <td class="checklistitem">{{cyanidetailings}}</td>
+        </tr>
+        {{/cyanidetailings}}
+        {{/hascyanide}}
+    </table>
 
 
 </div>

@@ -52,9 +52,10 @@ var Config = {
                 {id: "minerals", index: 2, label: "Minerals",items: Data.getMinerals,onFilter: Data.updateFilter,filterProperty: "minerals",array:true,maxVisibleItems: 5},
                 {id: "type", index: 5, label: "Site Type",items:[
 						{label: "Mine Site", value:0},
-						{label: "Processing Site", value:1}
+						{label: "Processing Site", value:1},
+                        {label: "Combined Site", value:2}
 					],onFilter: Data.updateFilter,filterProperty: "types",array:true},
-                {id: "workers", index: 7, label: "Workers",items:[
+                {id: "workers", index: 7, label: "Number of workers <small>in mining/processing</small>",items:[
                     {label: "< 50", value:0},
                     {label: "50-250", value:1},
                     {label: "250-500", value:2},
@@ -62,24 +63,24 @@ var Config = {
                 ],onFilter: Data.updateFilter,filterProperty: "workergroup"},
 				{id: "services", index: 6, label: "State services visiting",
 				items:Data.getServices,onFilter: Data.updateFilter,filterProperty: "services",array:true,maxVisibleItems:6},
-                {id: "mercury", index: 3, label: "Use of mercury",
+                {id: "mercury", index: 3, label: "Use of mercury in gold processing",
                 items: [
-                  {label: "Treated with mercury", value:2},
-                  {label: "Not treated with mercury", value:1},
-                  {label: "No data", value:0}
+                  {label: "Yes", value:2},
+                  {label: "No", value:1},
+                  {label: "Not applicable", value:0}
                 ],onFilter: Data.updateFilter,filterProperty: "mercury"},
-				{id: "cyanide", index: 4, label: "Cyanide leaching",
+				{id: "cyanide", index: 4, label: "Use of cyanide in gold processing",
 					items: [
-						{label: "Leached with cyanide", value:2},
-						{label: "Not eached with cyanide", value:1},
-						{label: "No data", value:0}
+						{label: "Yes", value:2},
+						{label: "No", value:1},
+						{label: "Not applicable", value:0}
 					],onFilter: Data.updateFilter,filterProperty: "cyanide"},
-				{id: "wounded", index: 8, label: "Wounded <small>in accidents</small>",
+				{id: "wounded", index: 8, label: "Accidents with wounded casualties",
 					items: [
 						{label: "Yes", value:1},
 						{label: "No", value:0}
 					],onFilter: Data.updateFilter,filterProperty: "haswounded"},
-				{id: "killed", index: 9, label: "Killed <small>in accidents</small>",
+				{id: "killed", index: 9, label: "Accidents with killed casualties",
 					items: [
 						{label: "Yes", value:1},
 						{label: "No", value:0}
@@ -103,7 +104,7 @@ var Config = {
         geology:{
             id: "geology",
             filterId: 2,
-            label: "Greenbelt zones <br>&ensp;<small>(source: GMIS, 2018)</small>",
+            label: "Geological greenstone <br>&ensp;<small>(source: GMIS, 2018)</small>",
             source: "http://ipis.annexmap.net/api/data/%apiScope%/geology",
             sourceId: "geology",
             display:{
