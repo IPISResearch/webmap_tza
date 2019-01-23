@@ -10,10 +10,10 @@ var Config = {
     infoUrl: "_templates/info.html",
     // starting point for map
     mapCoordinates: {
-      x: 34,
-      y: -4,
+      x: 32.8,
+      y: -3.3,
       zoom: 6,
-      bounds: [[39.79,-0.11],[28.47,-6.84]]
+      bounds: [[37.8,0.4],[27.8,-7.1]]
     },
     defaultBaseLayerIndex : 2,
     // if preLoad is defined, this occurs before the map is shown - used to pre-generate datasets etc.
@@ -55,7 +55,7 @@ var Config = {
 						{label: "Processing Site", value:1},
                         {label: "Combined Site", value:2}
 					],onFilter: Data.updateFilter,filterProperty: "types",array:true},
-                {id: "workers", index: 7, label: "Number of workers <small>in mining/processing</small>",items:[
+                {id: "workers", index: 7, label: "Number of workers <br><small>in mining/processing</small>",items:[
                     {label: "< 50", value:0},
                     {label: "50-250", value:1},
                     {label: "250-500", value:2},
@@ -63,24 +63,24 @@ var Config = {
                 ],onFilter: Data.updateFilter,filterProperty: "workergroup"},
 				{id: "services", index: 6, label: "State services visiting",
 				items:Data.getServices,onFilter: Data.updateFilter,filterProperty: "services",array:true,maxVisibleItems:6},
-                {id: "mercury", index: 3, label: "Use of mercury in gold processing",
+                {id: "mercury", index: 3, label: "Use of mercury <br><small>in gold processing</small>",
                 items: [
                   {label: "Yes", value:2},
                   {label: "No", value:1},
                   {label: "Not applicable", value:0}
                 ],onFilter: Data.updateFilter,filterProperty: "mercury"},
-				{id: "cyanide", index: 4, label: "Use of cyanide in gold processing",
+				{id: "cyanide", index: 4, label: "Use of cyanide <br><small>in gold processing</small>",
 					items: [
 						{label: "Yes", value:2},
 						{label: "No", value:1},
 						{label: "Not applicable", value:0}
 					],onFilter: Data.updateFilter,filterProperty: "cyanide"},
-				{id: "wounded", index: 8, label: "Accidents with wounded casualties",
+				{id: "wounded", index: 8, label: "Accidents causing injuries <br><small>in the past year</small>",
 					items: [
 						{label: "Yes", value:1},
 						{label: "No", value:0}
 					],onFilter: Data.updateFilter,filterProperty: "haswounded"},
-				{id: "killed", index: 9, label: "Accidents with killed casualties",
+				{id: "killed", index: 9, label: "Accidents causing fatalities <br><small>in the past year</small>",
 					items: [
 						{label: "Yes", value:1},
 						{label: "No", value:0}
