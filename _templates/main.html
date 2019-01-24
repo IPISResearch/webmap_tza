@@ -621,20 +621,45 @@
 
     <table class="infotable tabbed" border="0" cellspacing="1" cellpadding="0">
         <tr>
-            <th nowrap="" width="10%">Gold treatment using mercury</th><td>{{mercuryString}}</td>
+            <th nowrap="" width="10%">Gold processing using mercury</th><td>{{mercuryString}}</td>
         </tr>
         {{#hasmercury}}
         <tr>
-            <td nowrap="" class="checklistcaption line">Amalgamation</td>
-            <td class="checklistitem">{{oreamalgamation}}</td>
+            <td nowrap="" class="checklistcaption line"><i>Worst practices (Minamata Convention on Mercury):</i></td>
+            <td class="checklistitem"></td>
         </tr>
         <tr>
-            <td nowrap="" class="checklistcaption line">Open air burning</td>
-            <td class="checklistitem">{{openair}}</td>
+            <td nowrap="" class="checklistcaption line">● Whole ore amalgamation:</td>
+            <td class="checklistitem">
+                {{#oreamalgamation}}
+                    {{oreamalgamation}}
+                {{/oreamalgamation}}
+                {{^oreamalgamation}}
+                    No data
+                {{/oreamalgamation}}
+            </td>
         </tr>
         <tr>
-            <td nowrap="" class="checklistcaption line">Burning close to residential area</td>
-            <td class="checklistitem">{{openairclosetoresidential}}</td>
+            <td nowrap="" class="checklistcaption line">● Open air burning:</td>
+            <td class="checklistitem">
+                {{#openair}}
+                    {{openair}}
+                {{/openair}}
+                {{^openair}}
+                    No data
+                {{/openair}}
+            </td>
+        </tr>
+        <tr>
+            <td nowrap="" class="checklistcaption line">● Burning close to residential area:</td>
+            <td class="checklistitem">
+                {{#openairclosetoresidential}}
+                    {{openairclosetoresidential}}
+                {{/openairclosetoresidential}}
+                {{^openairclosetoresidential}}
+                    No data
+                {{/openairclosetoresidential}}
+            </td>
         </tr>
         {{/hasmercury}}
     </table>
@@ -643,12 +668,16 @@
 
     <table class="infotable tabbed" border="0" cellspacing="1" cellpadding="0">
         <tr>
-            <th nowrap="" width="10%">Gold treatment using cyanide</th><td>{{cyanideString}}</td>
+            <th nowrap="" width="10%">Gold processing using cyanide</th><td>{{cyanideString}}</td>
         </tr>
         {{#hascyanide}}
         {{#cyanidetailings}}
         <tr>
-            <td nowrap="" class="checklistcaption line">Cyanide leaching of mercury contaminated tailings</td>
+            <td nowrap="" class="checklistcaption line"><i>Worst practices (Minamata Convention on Mercury):</i></td>
+            <td class="checklistitem"></td>
+        </tr>
+        <tr>
+            <td nowrap="" class="checklistcaption line">● Cyanide leaching of mercury contaminated tailings:</td>
             <td class="checklistitem">{{cyanidetailings}}</td>
         </tr>
         {{/cyanidetailings}}

@@ -184,7 +184,7 @@ var Data = function () {
                         socio: {},
                         mercury: d.m == "No" ? 1 : d.m == "Yes" ? 2 : 0,
                         oreamalgamation: d.om,
-                        openair: d.pa,
+                        openair: d.oa,
                         openairclosetoresidential: d.or,
                         cyanide: d.c == "No" ? 1 : d.c == "Yes" ? 2 : 0,
                         cyanidetailings: d.cd
