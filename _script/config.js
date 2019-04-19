@@ -29,7 +29,7 @@ var Config = {
     layers:{
         visits: {
             id: "mines",
-            label: "Mining Sites",
+            label: "ASM sites",
             source: function(){return Data.getMines()},
             sourceId: "mines",
             popupOnhover: "name",
@@ -99,6 +99,27 @@ var Config = {
                   data: function(){return Data.getMinerals();}
                 },
                 belowLayer: 'ref_layer_mines'
+            }
+        },
+        lsm_villages:{
+            id: "lsm_villages",
+            filterId: 4,
+            label: "Villages surrounding LSM sites",
+            source: "http://ipis.annexmap.net/api/data/%apiScope%/lsm_villages",
+            sourceId: "lsm_villages",
+            display:{
+                type: 'symbol',
+                visible: false,
+                canToggle: true,
+                size: 4,
+                iconImage: "home-11",
+                belowLayer: ''
+            },
+            popupOnhover: "village",
+            onClick: function(item,lngLat){
+                UI.hideDashboard();
+                UI.popup(item.properties,"lsmVillageAreaPopup",lngLat,true);
+                UI.activateDashboardTab(1, document.getElementById('lsmVillageAreaPopupFirst'));
             }
         },
         geology:{

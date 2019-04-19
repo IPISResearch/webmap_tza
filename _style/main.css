@@ -444,6 +444,9 @@ body.disclaimer #disclaimer, body.info #info{
     min-width: 580px;
 }
 
+.popup.cols2.lsmVillageAreaPopup{
+    min-width: 450px;
+}
 
 .popupColLeft{
     /*width: 200px;*/
@@ -553,6 +556,10 @@ body.disclaimer #disclaimer, body.info #info{
     width: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+.lsmVillageAreaPopup .popupColRight{
+    padding-left: 130px;
 }
 
 .tabcontent{
