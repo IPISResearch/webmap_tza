@@ -104,7 +104,7 @@ var Config = {
         lsm_villages:{
             id: "lsm_villages",
             filterId: 4,
-            label: "Communities around LSM sites",
+            label: "Communities around selected LSM sites",
             source: "http://ipis.annexmap.net/api/data/%apiScope%/lsm_villages",
             sourceId: "lsm_villages",
             display:{
@@ -113,7 +113,7 @@ var Config = {
                 canToggle: true,
                 size: 4,
                 iconImage: "home-11",
-                belowLayer: ''
+                belowLayer: 'ref_layer_tradelines'
             },
             popupOnhover: "village",
             onClick: function(item,lngLat){
@@ -125,7 +125,7 @@ var Config = {
         lsm_mines:{
             id: "lsm_mines",
             filterId: 4,
-            label: "LSM sites",
+            label: "Selected LSM sites",
             source: "http://ipis.annexmap.net/api/data/%apiScope%/lsm_mines",
             sourceId: "lsm_mines",
             display:{
@@ -143,7 +143,7 @@ var Config = {
                 fillOpacity: 0.8,
                 visible: false,
                 canToggle: true,
-                belowLayer: 'ref_layer_mines'
+                belowLayer: 'ref_layer_armedgroupareas'
             },
             popupOnhover: "name",
             onClick: function(item,lngLat){

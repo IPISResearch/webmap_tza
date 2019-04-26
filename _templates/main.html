@@ -430,7 +430,7 @@
             <div class="{{tabButton1}} first" id="lsmVillageAreaPopupFirst" onclick="UI.activateDashboardTab(1,this)">Village information</div>
             <div class="{{tabButton2}}" onclick="UI.activateDashboardTab(2,this)">Socio-economic context</div>
             <div class="{{tabButton3}}" onclick="UI.activateDashboardTab(3,this)">LSM impact</div>
-            <div class="{{tabButton4}}" onclick="UI.activateDashboardTab(4,this)">Grievance and remedy</div>
+            <div class="{{tabButton4}}" onclick="UI.activateDashboardTab(4,this)">Grievance</div>
         </div>
         <div class="popupColRight">
             <div class="tabcontent">
@@ -461,7 +461,7 @@
                             <td>{{livelihoods}}</td>
                         </tr>
                         <tr>
-                            <th>Distance to LSM site</th>
+                            <th>Distance to {{lsmsite}} mine</th>
                             <td>{{distancelsm}}</td>
                         </tr>
                     </table>
@@ -497,12 +497,18 @@
                 <div border="0" cellspacing="0" cellpadding="0" class="tab tab3 {{tabPanel3}}">
                     <table class="infotable tabbed" border="0" cellspacing="1" cellpadding="0">
                         <tr>
-                            <th>Estimated number of villagers working in (LSM site)</th>
+                            <th>Estimated number of villagers working in {{lsmsite}} mine</th>
                             <td>{{lsmworkersvillage}}</td>
                         </tr>
+                        {{#lsmjobtypes}}
+                        <tr>
+                            <th>Services sub-contracted to villagers</th>
+                            <td>{{lsmjobtypes}}</td>
+                        </tr>
+                        {{/lsmjobtypes}}
                         {{#services}}
                         <tr>
-                            <th>Services outsourced to villagers</th>
+                            <th>Corporate social responsibility contributions in</th>
                             <td>{{services}}</td>
                         </tr>
                         {{/services}}
@@ -534,12 +540,6 @@
                             <td>{{grievancemechanism}}</td>
                         </tr>
                         {{/grievancemechanism}}
-                        {{#remedy}}
-                        <tr>
-                            <th>Remedy</th>
-                            <td>{{remedy}}</td>
-                        </tr>
-                        {{/remedy}}
                     </table>
                 </div>
             </div>
@@ -550,15 +550,15 @@
 
 <!--lsmMinePopup-->
 <div class="popup">
-    <h2>LSM Site: {{name}}</h2>
+    <h2>LSM Site: {{name}}{{#name_short}} ({{name_short}}){{/name_short}}</h2>
     <table border="0" cellspacing="0" cellpadding="0" class="infotable">
         <tr>
             <th>Mine name</th>
-            <td>{{name}}</td>
+            <td>{{name}}{{#name_short}} ({{name_short}}){{/name_short}}</td>
         </tr>
         <tr>
             <th>Operated by</th>
-            <td>{{company_ownership}}</td>
+            <td>{{company_ownership}}{{#nationality_ownership}} ({{nationality_ownership}}){{/nationality_ownership}}</td>
         </tr>
         <tr>
             <th>Licence number(s)</th>
