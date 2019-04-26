@@ -104,7 +104,7 @@ var Config = {
         lsm_villages:{
             id: "lsm_villages",
             filterId: 4,
-            label: "Villages surrounding LSM sites",
+            label: "Communities around LSM sites",
             source: "http://ipis.annexmap.net/api/data/%apiScope%/lsm_villages",
             sourceId: "lsm_villages",
             display:{
@@ -120,6 +120,35 @@ var Config = {
                 UI.hideDashboard();
                 UI.popup(item.properties,"lsmVillageAreaPopup",lngLat,true);
                 UI.activateDashboardTab(1, document.getElementById('lsmVillageAreaPopupFirst'));
+            }
+        },
+        lsm_mines:{
+            id: "lsm_mines",
+            filterId: 4,
+            label: "LSM sites",
+            source: "http://ipis.annexmap.net/api/data/%apiScope%/lsm_mines",
+            sourceId: "lsm_mines",
+            display:{
+                type: 'fill',
+                fillColor: {
+                    property: "commodity",
+                    data: [
+                        {label: "Gold", value: "Gold" , color: "#DAA520"},
+                        {label: "Diamond", value: "Diamond" , color: "#4937A8"},
+                        {label: "Copper", value: "Copper" , color: "#D05D07"},
+                        {label: "Limestone", value: "Limestone" , color : "#810051"},
+                        {label: "Salt", value: "Salt", color: "#20A386"}
+                    ]
+                },
+                fillOpacity: 0.8,
+                visible: false,
+                canToggle: true,
+                belowLayer: 'ref_layer_mines'
+            },
+            popupOnhover: "name",
+            onClick: function(item,lngLat){
+                UI.hideDashboard();
+                UI.popup(item.properties,"lsmMinePopup",lngLat,true);
             }
         },
         geology:{
