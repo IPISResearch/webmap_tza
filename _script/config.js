@@ -104,7 +104,7 @@ var Config = {
         lsm_villages:{
             id: "lsm_villages",
             filterId: 4,
-            label: "Communities around selected LSM sites",
+            label: "Communities around selected Industrial Mining sites",
             source: "http://ipis.annexmap.net/api/data/%apiScope%/lsm_villages",
             sourceId: "lsm_villages",
             display:{
@@ -125,7 +125,7 @@ var Config = {
         lsm_mines:{
             id: "lsm_mines",
             filterId: 4,
-            label: "Selected LSM sites",
+            label: "Selected Industrial Mining sites",
             source: "http://ipis.annexmap.net/api/data/%apiScope%/lsm_mines",
             sourceId: "lsm_mines",
             display:{
