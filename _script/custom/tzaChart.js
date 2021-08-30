@@ -82,8 +82,8 @@ var TzaChart = function(){
 
 
         var chart_workers = document.getElementById("chart_workers");
-        var worker_label = " workers";
-        if (worker_label !== 1) worker_label+="s";
+        var worker_label = " worker";
+        if (workerCount !== 1) worker_label+="s";
         if (chart_workers) chart_workers.innerHTML = workerCount.toLocaleString() + worker_label;
 
 
