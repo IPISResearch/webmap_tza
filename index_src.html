@@ -1,11 +1,14 @@
 <html>
 <head>
     <meta charset=utf-8 />
+    <title>IPIS Map</title>
 
     <link href='_style/main.css?{build}' rel='stylesheet' />
     <link href='_style/search.css?{build}' rel='stylesheet' />
-    <link href='_style/mapboxgl.0.43.0.css?{build}' rel='stylesheet' />
+    <link href='_style/c3.min.css?{build}' rel='stylesheet' />
+    <link href='_style/mapboxgl.1.5.1.css?{build}' rel='stylesheet' />
 
+    <script src="_script/mapboxgl.js?{build}"></script>
     <script src="_script/core-min.js?{build}"></script>
     <script src="_script/c3d3.js?{build}"></script>
     <script src="_script/webmapping-min.js?{build}"></script>
@@ -16,17 +19,7 @@
 <div id="menu"></div>
 <div id="map">
 
-    <div id='legend'>
-        <div class="charts">
-            <h3>Visible mining sites</h3>
-            <div class="label">
-                <span id="chart_current"></span> of <span id="chart_total"></span> mining sites
-            </div>
-            <div id="chart1"></div>
-
-        </div>
-
-    </div>
+    <div id='legend'></div>
 
 </div>
 

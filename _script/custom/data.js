@@ -70,7 +70,7 @@ var Data = function () {
         };
 
         function loadMines() {
-            var url = "http://ipis.annexmap.net/api/data/"+Config.apiScope+"/all?key=ipis";
+            var url = "https://ipis.annexmap.net/api/data/"+Config.apiScope+"/all?key=ipis";
 
             FetchService.json(url, function (data,xhr) {
 

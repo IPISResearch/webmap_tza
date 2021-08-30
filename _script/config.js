@@ -105,11 +105,11 @@ var Config = {
             id: "lsm_villages",
             filterId: 4,
             label: "Communities around selected Industrial Mining sites",
-            source: "http://ipis.annexmap.net/api/data/%apiScope%/lsm_villages",
+            source: "https://ipis.annexmap.net/api/data/%apiScope%/lsm_villages",
             sourceId: "lsm_villages",
             display:{
                 type: 'symbol',
-                visible: false,
+                visible: true,
                 canToggle: true,
                 size: 4,
                 iconImage: "home-11",
@@ -118,15 +118,17 @@ var Config = {
             popupOnhover: "village",
             onClick: function(item,lngLat){
                 UI.hideDashboard();
-                UI.popup(item.properties,"lsmVillageAreaPopup",lngLat,true);
-                UI.activateDashboardTab(1, document.getElementById('lsmVillageAreaPopupFirst'));
+                UI.popup(item.properties,"villagePopup",lngLat,true);
+                UI.showDashboard(item.properties,"lsmVillageAreaPopup");
+
+                //UI.activateDashboardTab(1, document.getElementById('lsmVillageAreaPopupFirst'));
             }
         },
         lsm_mines:{
             id: "lsm_mines",
             filterId: 4,
             label: "Selected Industrial Mining sites",
-            source: "http://ipis.annexmap.net/api/data/%apiScope%/lsm_mines",
+            source: "https://ipis.annexmap.net/api/data/%apiScope%/lsm_mines",
             sourceId: "lsm_mines",
             display:{
                 type: 'fill',
@@ -141,7 +143,7 @@ var Config = {
                     ]
                 },
                 fillOpacity: 0.8,
-                visible: false,
+                visible: true,
                 canToggle: true,
                 belowLayer: 'ref_layer_armedgroupareas'
             },
@@ -155,7 +157,7 @@ var Config = {
             id: "geology",
             filterId: 2,
             label: "Geological greenstone belt <br>&ensp;<small>(source: GMIS, 2018)</small>",
-            source: "http://ipis.annexmap.net/api/data/%apiScope%/geology",
+            source: "https://ipis.annexmap.net/api/data/%apiScope%/geology",
             sourceId: "geology",
             display:{
                 type: 'fill',
@@ -175,7 +177,7 @@ var Config = {
             id: "protectedAreas",
             filterId: 3,
             label: "Protected areas<br>&ensp;<small>(source: WRI, 2018)</small>",
-            source: "http://ipis.annexmap.net/api/data/%apiScope%/protectedareas",
+            source: "https://ipis.annexmap.net/api/data/%apiScope%/protectedareas",
             sourceId: "protectedAreas",
             display:{
                 type: 'fill',

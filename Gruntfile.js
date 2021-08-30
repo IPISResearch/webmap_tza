@@ -9,6 +9,7 @@ module.exports = function(grunt) {
 			core:{
 				src: [
 					'core/_script/lib/**/*.js',
+                    '!core/_script/lib/mapboxgl.1.5.1.js',
 					'core/_script/map/**/*.js',
 					'core/_script/translation/**/*.js'
 
@@ -27,7 +28,13 @@ module.exports = function(grunt) {
 					'core/_script/c3/**/*.js'
 				],
 				dest: 'build/_script/c3d3.js'
-			}
+			},
+			mapbox:{
+                src: [
+                    'core/_script/lib/mapboxgl.1.5.1.js'
+                ],
+                dest: 'build/_script/mapboxgl.js'
+            }
 		},
 		uglify: {
 			options: {
@@ -87,12 +94,12 @@ module.exports = function(grunt) {
 						return grunt.template.process('<%= pkg.version %>-build<%= grunt.template.today("yyyymmdd.hhMM") %>');
 					}
 				},
-					{
-						from: '{version}',
-						to: function (matchedWord) {
-							return grunt.template.process('<%= pkg.version %>');
-						}
-					}]
+				{
+					from: '{version}',
+					to: function (matchedWord) {
+						return grunt.template.process('<%= pkg.version %>');
+					}
+				}]
 			},
 			dev: {
 				src: ['dev_src.html'],

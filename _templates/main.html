@@ -1,6 +1,6 @@
 <!--menu-->
     <div class="inner">
-      <a href="http://ipisresearch.be"><img src="_img/ipislogo.png" alt="IPIS logo" style="float:right;width:44px"></a>
+      <a href="https://ipisresearch.be"><img src="_img/ipislogo.png" alt="IPIS logo" style="float:right;width:44px"></a>
       <h2 class="section">Map of Mining Sites in Tanzania</h2>
 
         <div style="display: none">
@@ -148,7 +148,7 @@
     </div>
     <div class="dashboardtabs">
         {{#picture}}
-        <span data-url="http://www.ipisresearch.be/mapping/webmapping/resources/img_sites/{{picture}}" class="image" style="background-image: url('http://www.ipisresearch.be/mapping/webmapping/resources/img_sites/{{picture}}')">
+        <span data-url="https://www.ipisresearch.be/mapping/webmapping/resources/img_sites/{{picture}}" class="image" style="background-image: url('http://www.ipisresearch.be/mapping/webmapping/resources/img_sites/{{picture}}')">
 
         </span>
         {{/picture}}
@@ -421,6 +421,11 @@
     </table>
 </div>
 <!--/concessionPopup-->
+
+<!--villagePopup-->
+{{{village}}}
+<!--/villagePopup-->
+
 
 <!--lsmVillageAreaPopup-->
 <div class="popup cols2 lsmVillageAreaPopup">
@@ -865,3 +870,21 @@
     <div class="subtabheader">{{{formattedDate}}}: {{{project}}} {{#visit_onsite_novisit}} <br>  <u>Non-visité sur place</u>: {{{visit_onsite_novisitreason}}} {{/visit_onsite_novisit}}
     </div>
 <!--/visitDateProject-->
+
+
+
+<!--legendchart-->
+<div class="charts">
+    <h3>Visible mining sites</h3>
+    <div class="label">
+        <span id="chart_current"></span> of <span id="chart_total"></span> mining sites
+        <div id="chart_workers"></div>
+    </div>
+    <div id="chart1"></div>
+
+</div>
+<!--/legendchart-->
+
+
+
+
